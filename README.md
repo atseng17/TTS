@@ -176,3 +176,4 @@ python train_glow_tts.py
 ## Andrew's TODO's
 - Add Finetuning script for Glow-TTS on LibriTTS
 - Speaker embedding analysis on TTS models
+- Find another evaluation method for TTSs
