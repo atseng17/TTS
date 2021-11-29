@@ -162,3 +162,12 @@ internal/*
 *_pitch.npy
 *_phoneme.npy
 wandb
+
+# addiotional packages
+NISQA/weights/*
+NISQA/results/*
+
+recipes/libriTTS/glow_tts/coqui_tts-*
+recipes/libriTTS/glow_tts/phoneme_cache
+recipes/libriTTS/glow_tts/config.json
+savedoutputs/*
