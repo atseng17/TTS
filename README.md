@@ -156,3 +156,23 @@ If you are on Windows, 👑@GuyPaddock wrote installation instructions [here](ht
     |- vocoder/         (Vocoder models.)
         |- (same)
 ```
+
+
+## Andrew's modifications
+Training and evaluatiion of single speaker TTS
+```
+python andrew_playground.py
+```
+Training of multi speaker TTS
+```
+cd recipes/libriTTS/glow_tts
+python train_glow_tts.py 
+```
+
+## Andrew's updates
+11.23.2021 Added NISQA for speaker naturalness evaluation
+11.29.2021 Added training script for training Glow-TTS on LibriTTS
+
+## Andrew's TODO's
+- Add Finetuning script for Glow-TTS on LibriTTS
+- Speaker embedding analysis on TTS models
