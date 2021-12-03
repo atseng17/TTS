@@ -168,12 +168,33 @@ Training of multi speaker TTS
 cd recipes/libriTTS/glow_tts
 python train_glow_tts.py 
 ```
+Fine tuning multispeaker TTS
+```
+# download pretrained model by...(having issues)
+tts --model_name tts_models/en/vctk/sc-glow-tts --text "hello world." --speaker_wav 28.wav
+
+CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/glow_tts/train_glow_tts.py \
+    /home/atseng/.local/share/tts/tts_models--en--vctk--sc-glow-tts \
+    --coqpit.run_name "sc-glow-tts-finetune" \
+    --coqpit.lr 0.00001
+```
+
+<!-- ```
+doesnt work
+tts --model_name tts_models/en/vctk/sc-glow-tts --text "Text for TTS"
+
+doesnt work
+tts --model_name tts_models/en/vctk/sc-glow-tts --text "hello world." --speaker_wav 28.wav
+
+works
+tts --model_name tts_models/en/vctk/fast_pitch --text "hello world." --speaker_idx VCTK_p225
+
+``` -->
 
 ## Andrew's updates
 11.23.2021 Added NISQA for speaker naturalness evaluation
 11.29.2021 Added training script for training Glow-TTS on LibriTTS
-
+12.03.2021 Added Finetuning script for SC-Glow-TTS on LibriTTS
 ## Andrew's TODO's
-- Add Finetuning script for Glow-TTS on LibriTTS
 - Speaker embedding analysis on TTS models
 - Find another evaluation method for TTSs
