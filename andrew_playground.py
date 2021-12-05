@@ -88,12 +88,33 @@ if TASK == "train_model":
     # AND... 3,2,1... 🚀
     trainer.fit()
 elif TASK == "inference_model":
-    print("HI")
-    srpt='tts --text "Text for TTS" \
+    # print("HI")
+    # /home/atseng/SCRATCH/DL/project/TTS/recipes/ljspeech/LJSpeech-1.1/wavs/LJ001-0001.wav
+    # python run_predict.py --mode predict_file --pretrained_model weights/nisqa.tar --deg /path/to/wav/file.wav --output_dir /path/to/dir/with/results
+    srpt='tts --text "Printing, in the only sense with which we are at present concerned, differs from most if not from all the arts and crafts represented in the Exhibition" \
       --model_path coqui_tts-November-22-2021_01+41PM-33aa27e2/best_model.pth.tar \
       --config_path coqui_tts-November-22-2021_01+41PM-33aa27e2/config.json \
-      --out_path savedoutputs/output3.wav'
+      --out_path savedoutputs/output_TTS_poorq.wav'
     subprocess.call(srpt, shell=True)
-# VCTK is here:
-# /mnt/aibb_data/development/atseng/vcloning
-    # """
+elif TASK == "finetune_model":
+    pass
+
+
+#     CUDA_VISIBLE_DEVICES="0" python recipes/ljspeech/glow_tts/train_glowtts.py \
+#     --restore_path  /home/ubuntu/.local/share/tts/tts_models--en--ljspeech--glow-tts
+
+#     CUDA_VISIBLE_DEVICES="0" python TTS/bin/train_tts.py \
+#     --config_path  /home/ubuntu/.local/share/tts/tts_models--en--ljspeech--glow-tts/config.json \
+#     --restore_path  /home/ubuntu/.local/share/tts/tts_models--en--ljspeech--glow-tts
+
+#     CUDA_VISIBLE_DEVICES="0" python recipes/ljspeech/glow_tts/train_glowtts.py \
+#     --restore_path  /home/ubuntu/.local/share/tts/tts_models--en--ljspeech--glow-tts
+#     --coqpit.run_name "glow-tts-finetune" \
+#     --coqpit.lr 0.00001
+
+#     # VCTK is here:
+#     # /mnt/aibb_data/development/atseng/vcloning
+#     # """
+elif TASK == "evaluation":
+    
+    pass
