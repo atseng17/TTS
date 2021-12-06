@@ -159,16 +159,34 @@ If you are on Windows, 👑@GuyPaddock wrote installation instructions [here](ht
 
 
 ## Andrew's modifications
-Training and evaluatiion of single speaker TTS
+Training, inference, and evaluatiion of single speaker TTS
 ```
 python andrew_playground.py
 ```
 Training of multi speaker TTS
 ```
-cd recipes/libriTTS/glow_tts
-python train_glow_tts.py 
+# libriTTS
+python recipes/libriTTS/glow_tts/train_glow_tts_quick.py 
+
+tts --text "Text for TTSs" --out_path savedoutputs/libris_from_scratch.wav --model_path recipes/libriTTS/glow_tts/coqui_tts-December-05-2021_10+30PM-267d77c7/best_model.pth.tar --config_path recipes/libriTTS/glow_tts/coqui_tts-December-05-2021_10+30PM-267d77c7/config.json --speakers_file_path recipes/libriTTS/glow_tts/coqui_tts-December-05-2021_10+30PM-267d77c7/speakers.json --speaker_idx LTTS_1272
+
+# vctk
+python recipes/vctk/glow_tts/train_glow_tts_quick.py
+
+
+
 ```
-Fine tuning multispeaker TTS
+
+Inference pretrained multispeaker TT
+```
+tts --text "Text for TTS." --out_path savedoutputs/inf_from_pretriined_multi_TTS.wav --model_name tts_models/en/vctk/sc-glow-tts  --speaker_idx p225
+```
+Inference trained multispeaker TT
+```
+
+```
+
+Fine tuning multispeaker TTS from vctk to libriTTS
 ```
 # download pretrained model by...(having issues)
 tts --model_name tts_models/en/vctk/sc-glow-tts --text "hello world." --speaker_wav 28.wav
@@ -177,6 +195,11 @@ CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/glow_tts/train_glow_tts.py \
     /home/atseng/.local/share/tts/tts_models--en--vctk--sc-glow-tts \
     --coqpit.run_name "sc-glow-tts-finetune" \
     --coqpit.lr 0.00001
+```
+Inference Finetuned multispeaker TTS, need fix, including https://github.com/coqui-ai/TTS/issues/932
+```
+# --speaker_idx can be selected in speaker.json
+./TTS/bin/synthesize.py --text "Text for TTSs" --out_path output/path/speech.wav --model_path recipes/libriTTS/glow_tts/sc-glow-tts-finetune-December-03-2021_10+10PM-03d87a6c/best_model.pth.tar --config_path recipes/libriTTS/glow_tts/sc-glow-tts-finetune-December-03-2021_10+10PM-03d87a6c/config.json --speakers_file_path recipes/libriTTS/glow_tts/sc-glow-tts-finetune-December-03-2021_10+10PM-03d87a6c/speakers.json --speaker_idx LTTS_2086
 ```
 
 <!-- ```
@@ -198,3 +221,5 @@ tts --model_name tts_models/en/vctk/fast_pitch --text "hello world." --speaker_i
 ## Andrew's TODO's
 - Speaker embedding analysis on TTS models
 - Find another evaluation method for TTSs
+- Figure out training log information
+- figure out what speaker ID we are going to finetune
