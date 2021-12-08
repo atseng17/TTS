@@ -171,3 +171,8 @@ recipes/libriTTS/glow_tts/coqui_tts-*
 recipes/libriTTS/glow_tts/phoneme_cache
 recipes/libriTTS/glow_tts/config.json
 savedoutputs/*
+/home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/vits/vits_vctk-*
+/home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/vits/phoneme_cache
+
+/home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/tacotron-DDC/phoneme_cache
+/home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/tacotron-DDC/coqui_tts*
