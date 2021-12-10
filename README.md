@@ -198,24 +198,24 @@ CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/glow_tts/train_glow_tts.py \
 # Fine tuning on vits
 tts --model_name tts_models/en/vctk/vits --text "hello world." --speaker_wav 28.wav
 
-CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/vits/train_vits_quick.py \
+CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/vits/train_vits.py \
     --restore_path /home/atseng/.local/share/tts/tts_models--en--vctk--vits/model_file.pth.tar
 
 # Fine tuning on TecotronDDC
 tts --model_name tts_models/en/sam/tacotron-DDC --text "hello world."
-CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/tacotron-DDC/train_tacotron-DDC_quick.py \
-    --restore_path /home/atseng/.local/share/tts/tts_models--en--sam--tacotron-DDC/model_file.pth.tar
+<!-- CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/tacotron-DDC/train_tacotron-DDC_100_16.py \
+    --restore_path /home/atseng/.local/share/tts/tts_models--en--sam--tacotron-DDC/model_file.pth.tar -->
 
-CUDA_VISIBLE_DEVICES="0,1" python TTS/bin/distribute.py --script recipes/libriTTS/tacotron-DDC/train_tacotron-DDC_quick.py \
+CUDA_VISIBLE_DEVICES="0,1,2,3" python TTS/bin/distribute.py --script recipes/libriTTS/tacotron-DDC/train_tacotron-DDC_100_16.py \
     --restore_path /home/atseng/.local/share/tts/tts_models--en--sam--tacotron-DDC/model_file.pth.tar
 
 # Fine tuning on fast pitch
 tts --model_name tts_models/en/vctk/fast_pitch --text "hello world."
-CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/fast_pitch/train_fast_pitch_quick.py \
+CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/fast_pitch/train_fast_pitch_1000_32.py \
     --restore_path /home/atseng/.local/share/tts/tts_models--en--vctk--fast_pitch/model_file.pth.tar
 
-CUDA_VISIBLE_DEVICES="0,1,2" python TTS/bin/distribute.py --script recipes/libriTTS/fast_pitch/train_fast_pitch_quick.py \
-    --restore_path /home/atseng/.local/share/tts/tts_models--en--vctk--fast_pitch/model_file.pth.tar
+<!-- CUDA_VISIBLE_DEVICES="0,1,2,3" python TTS/bin/distribute.py --script recipes/libriTTS/fast_pitch/train_fast_pitch.py \
+    --restore_path /home/atseng/.local/share/tts/tts_models--en--vctk--fast_pitch/model_file.pth.tar -->
 
 ```
 Inference Finetuned multispeaker TTS, need fix, including https://github.com/coqui-ai/TTS/issues/932
