@@ -221,21 +221,23 @@ CUDA_VISIBLE_DEVICES="0" python recipes/libriTTS/fast_pitch/train_fast_pitch_100
 Inference Finetuned multispeaker TTS, need fix, including https://github.com/coqui-ai/TTS/issues/932
 ```
 
-# inference on glowtts
-./TTS/bin/synthesize.py --text "Text for TTSs" --out_path savedoutputs/speech.wav --model_path /home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/glow_tts/coqui_tts-December-07-2021_07+25PM-2ebd3bbd/checkpoint_90000.pth.tar --config_path /home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/glow_tts/coqui_tts-December-07-2021_07+25PM-2ebd3bbd/config.json --speakers_file_path /home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/glow_tts/coqui_tts-December-07-2021_07+25PM-2ebd3bbd/speakers.json --speaker_idx LTTS_1272
+<!-- # inference on glowtts
+./TTS/bin/synthesize.py --text "Text for TTSs" --out_path savedoutputs/speech.wav --model_path /home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/glow_tts/coqui_tts-December-07-2021_07+25PM-2ebd3bbd/checkpoint_90000.pth.tar --config_path /home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/glow_tts/coqui_tts-December-07-2021_07+25PM-2ebd3bbd/config.json --speakers_file_path /home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/glow_tts/coqui_tts-December-07-2021_07+25PM-2ebd3bbd/speakers.json --speaker_idx LTTS_1272 -->
 
 # inference on vits
 ./TTS/bin/synthesize.py --text "Text for TTSs" --out_path savedoutputs/speech.wav --model_path /home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/vits/vits_vctk-December-07-2021_04+19PM-2ebd3bbd/best_model_1000162.pth.tar --config_path /home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/vits/vits_vctk-December-07-2021_04+19PM-2ebd3bbd/config.json --speakers_file_path /home/atseng/SCRATCH/DL/project/TTS/recipes/libriTTS/vits/vits_vctk-December-07-2021_04+19PM-2ebd3bbd/speakers.json --speaker_idx LTTS_1272
 
 # inference on TDDC
 ./TTS/bin/synthesize.py --text "Text for TTSs" --out_path savedoutputs/speech.wav --model_path recipes/libriTTS/tacotron-DDC/coqui_tts-December-07-2021_09+17PM-2ebd3bbd/checkpoint_270000.pth.tar --config_path recipes/libriTTS/tacotron-DDC/coqui_tts-December-07-2021_09+17PM-2ebd3bbd/config.json --speakers_file_path recipes/libriTTS/tacotron-DDC/coqui_tts-December-07-2021_09+17PM-2ebd3bbd/speakers.json --speaker_idx LTTS_1272
-
+# vits inference all speakers in LibriTTS test
 
 ## Andrew's updates
 11.23.2021 Added NISQA for speaker naturalness evaluation
 11.29.2021 Added training script for training Glow-TTS on LibriTTS
 12.03.2021 Added Finetuning script for SC-Glow-TTS on LibriTTS (need fix)
 12.03.2021 Added Finetuning script for vits/Tacotron-DDC on LibriTTS
+12.09.2021 Added inference script for vits/Tecotron-DDC
+
 ## Andrew's TODO's
 - Speaker embedding analysis on TTS models
 - Find another evaluation method for TTSs
