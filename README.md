@@ -231,6 +231,11 @@ Inference Finetuned multispeaker TTS, need fix, including https://github.com/coq
 ./TTS/bin/synthesize.py --text "Text for TTSs" --out_path savedoutputs/speech.wav --model_path recipes/libriTTS/tacotron-DDC/coqui_tts-December-07-2021_09+17PM-2ebd3bbd/checkpoint_270000.pth.tar --config_path recipes/libriTTS/tacotron-DDC/coqui_tts-December-07-2021_09+17PM-2ebd3bbd/config.json --speakers_file_path recipes/libriTTS/tacotron-DDC/coqui_tts-December-07-2021_09+17PM-2ebd3bbd/speakers.json --speaker_idx LTTS_1272
 # vits inference all speakers in LibriTTS test
 
+# compute embedding(not working)
+python TTS/bin/compute_embeddings.py /mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_929250.pth.tar /mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/config.json  ssss /mnt/aibb_data/development/atseng/VCproject/LibriTTS/fast_pitch_embedding/
+# display pitch
+notebooks/dataset_analysis/CheckPitch.ipynb
+
 ## Andrew's updates
 11.23.2021 Added NISQA for speaker naturalness evaluation
 11.29.2021 Added training script for training Glow-TTS on LibriTTS
