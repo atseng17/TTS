@@ -1,15 +1,24 @@
 import subprocess
 import json
 import tqdm
+INFfastpitch=False
+INFteco=True
+if INFfastpitch:
+    model_name = "fast_pitch"
+    model_paths=["/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_902700.pth.tar",
+    "/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_911550.pth.tar",
+    "/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_920400.pth.tar",
+    "/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_929250.pth.tar"]
+    config_path = "/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/config.json"
+    speakers_file_path ="/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/speakers.json"
+elif INFteco:
+    model_name = "tacotron_DDC"
+    model_paths=["/mnt/aibb_data/development/atseng/VCproject/trained_models/tacotron-DDC/tecotronddc_libritts-December-10-2021_09+37AM-f92878cf/checkpoint_274350.pth.tar",
+    "/mnt/aibb_data/development/atseng/VCproject/trained_models/tacotron-DDC/tecotronddc_libritts-December-10-2021_09+37AM-f92878cf/checkpoint_278775.pth.tar"]
+    config_path = "/mnt/aibb_data/development/atseng/VCproject/trained_models/tacotron-DDC/tecotronddc_libritts-December-10-2021_09+37AM-f92878cf/config.json"
+    speakers_file_path ="/mnt/aibb_data/development/atseng/VCproject/trained_models/tacotron-DDC/tecotronddc_libritts-December-10-2021_09+37AM-f92878cf/speakers.json"
 
-# text = "Text for TTSs"
-model_name = "fast_pitch"
-model_paths=["/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_902700.pth.tar",
-"/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_911550.pth.tar",
-"/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_920400.pth.tar",
-"/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_929250.pth.tar"]
-config_path = "/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/config.json"
-speakers_file_path ="/mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/speakers.json"
+
 text_list = ["Now let us to business.",
 "What did it mean?",
 "'Uncas will stay,' was the calm reply",
