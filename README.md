@@ -231,8 +231,15 @@ Inference Finetuned multispeaker TTS, need fix, including https://github.com/coq
 ./TTS/bin/synthesize.py --text "Text for TTSs" --out_path savedoutputs/speech.wav --model_path recipes/libriTTS/tacotron-DDC/coqui_tts-December-07-2021_09+17PM-2ebd3bbd/checkpoint_270000.pth.tar --config_path recipes/libriTTS/tacotron-DDC/coqui_tts-December-07-2021_09+17PM-2ebd3bbd/config.json --speakers_file_path recipes/libriTTS/tacotron-DDC/coqui_tts-December-07-2021_09+17PM-2ebd3bbd/speakers.json --speaker_idx LTTS_1272
 # vits inference all speakers in LibriTTS test
 
+# inference and evaluation 
+```
+# do inference on our custom test dataset
+python inference_and_eval_addition.py
+```
+
 # compute embedding(not working)
 python TTS/bin/compute_embeddings.py /mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/checkpoint_929250.pth.tar /mnt/aibb_data/development/atseng/VCproject/trained_models/fast_pitch/fast_pitch_ljspeech-December-09-2021_08+25PM-f92878cf/config.json  ssss /mnt/aibb_data/development/atseng/VCproject/LibriTTS/fast_pitch_embedding/
+
 # data Analysis
 notebooks/dataset_analysis/CheckPitch.ipynb
 notebooks/dataset_analysis/PhonemeCoverage.ipynb
@@ -243,9 +250,11 @@ notebooks/dataset_analysis/PhonemeCoverage.ipynb
 12.03.2021 Added Finetuning script for SC-Glow-TTS on LibriTTS (need fix)
 12.03.2021 Added Finetuning script for vits/Tacotron-DDC on LibriTTS
 12.09.2021 Added inference script for vits/Tecotron-DDC
+12.14.2021 Added phonome and pitch analysis for vits/Tecotron-DDC
+12.15.2021 Added eval script for vits/Tecotron-DDC
 
 ## Andrew's TODO's
-- Speaker embedding analysis on TTS models
-- Find another evaluation method for TTSs
+- Speaker embedding analysis on TTS models (not going to do it)
+- Find another evaluation method for TTSs (not going to do it)
 - Figure out training log information
 
