@@ -36,3 +36,11 @@ with open(speakers_file_path) as f:
                 out_path = "/mnt/aibb_data/development/atseng/VCproject/inference_results/{}/checkpoint_{}_text_{}_speaker_{}.wav".format(model_name,m_id,t_id,speaker_idx)
                 srpt='tts --text "{}" --out_path {} --model_path {} --config_path {} --speakers_file_path {} --speaker_idx {}'.format(text,out_path, model_path, config_path, speakers_file_path, speaker_idx)
                 subprocess.call(srpt, shell=True)
+
+
+                output_dir = "voice_samples/{}/nisqa_score".format(model_name)
+                srpt='python NISQA/run_predict.py --mode predict_file --pretrained_model NISQA/weights/nisqa.tar \
+                            --deg {} --output_dir {}'.format(wav_path,output_dir)
+                subprocess.call(srpt, shell=True)
+                os.rename(output_dir+'/NISQA_results.csv', output_dir+'/epoch_100_text_{}_speaker_{}.csv'.format(wav_path.split("/")[-1].split(".")[0],speaker_idx))
+
