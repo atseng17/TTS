@@ -34,9 +34,13 @@ parser.add_argument("--eval", type=bool, help="compute eval.", default=True)
 
 args = parser.parse_args()
 
-c_dataset = load_config(args.config_dataset_path)
+# c_dataset = load_config(args.config_dataset_path)
+from TTS.config import BaseAudioConfig, BaseDatasetConfig
+dataset_path = "/mnt/aibb_data/development/atseng/VCproject/LibriTTS/dev-clean"
+dataset_config = BaseDatasetConfig(name="libri_tts", meta_file_train=None, path=dataset_path)
 
-meta_data_train, meta_data_eval = load_tts_samples(c_dataset.datasets, eval_split=args.eval)
+# meta_data_train, meta_data_eval = load_tts_samples(c_dataset.datasets, eval_split=args.eval)
+meta_data_train, meta_data_eval = load_tts_samples(dataset_config, eval_split=args.eval)
 wav_files = meta_data_train + meta_data_eval
 
 speaker_manager = SpeakerManager(
